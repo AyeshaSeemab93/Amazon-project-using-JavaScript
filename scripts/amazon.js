@@ -106,7 +106,16 @@ document.querySelectorAll('.js-add-to-cart')
         productId: productId,
         quantity: 1 }); 
       }
-      console.log(cart);
+      //updating the cart quantity:
+      let cartQuantity = 0;
+      cart.forEach((cartItem) =>{
+      cartQuantity += cartItem.quantity;
+      })
+      // console.log(cartQuantity);
+      //showing updated cart quantity on web page(DOM)
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+      // console.log(cart);
     });
   });
 
@@ -128,6 +137,3 @@ document.querySelectorAll('.js-add-to-cart')
 
 
 
-
-        // <img class="product-rating-stars" src="images/ratings/rating-${product.rating.stars * 10}.png"> 
-        // * 10 bec the images are stored with name 45 instead of 4.0, 30 instead of 3.0
