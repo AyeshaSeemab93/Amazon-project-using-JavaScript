@@ -17,37 +17,7 @@
 //       rating: {
 //         stars: 4,
 //         count: 127
-//       },
-//       priceCents: 2095
-//     },
-//     {
-//       image: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-//       name: 'Adults Plain Cotton T-Shirt - 2 Pack',
-//       rating: {
-//         stars: 4.5,
-//         count: 56
-//       },
-//       priceCents: 799
-//     },
-//     {
-//       image: 'images/products/black-2-slot-toaster.jpg',
-//       name: '2 Slot Toaster- Black',
-//       rating: {
-//         stars: 5,
-//         count: 2179
-//       },
-//       priceCents: 1899
-//     }
-//     ,
-//     {
-//       image: 'images/products/6-piece-white-dinner-plate-set.jpg',
-//       name: '6 Piece White Dinner Plate Set',
-//       rating: {
-//         stars: 4,
-//         count: 37
-//       },
-//       priceCents: 2067
-//     }
+//       }
 //   ];
 
 
@@ -101,7 +71,7 @@ products.forEach((product)=>{
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary">
+    <button data-product-id = "${product.id}" class="add-to-cart-button button-primary js-add-to-cart">
       Add to Cart
     </button>
     </div>
@@ -111,6 +81,48 @@ products.forEach((product)=>{
 console.log(productsHTML);
 //putting HTML in HTML file using DOM:
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+//adding event(JS) in button
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button)=>
+  {
+    button.addEventListener('click', ()=>
+    {
+      //store the productName attached(using data attribute) to the button in the cart
+     const productId = button.dataset.productId;
+       //check if product if already in the cart:
+       let matchingItem ;
+       cart.forEach((cartItem)=>{
+            if(productId === cartItem.productId){
+              matchingItem = cartItem;
+            }
+            });
+       
+      if(matchingItem){
+        matchingItem.quantity++;
+      }
+      else{
+      cart.push({
+        productId: productId,
+        quantity: 1 }); 
+      }
+      console.log(cart);
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
