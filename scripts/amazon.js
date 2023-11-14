@@ -78,7 +78,8 @@ products.forEach((product)=>{
     
 `;}
 )
-console.log(productsHTML);
+
+// console.log(productsHTML); give full details of product
 //putting HTML in HTML file using DOM:
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
@@ -87,10 +88,10 @@ document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>
   {
     button.addEventListener('click', ()=>
-    {
+    {    
       //store the productName attached(using data attribute) to the button in the cart
      const productId = button.dataset.productId;
-       //check if product if already in the cart:
+       //check if product is already in the cart:
        let matchingItem ;
        cart.forEach((cartItem)=>{
             if(productId === cartItem.productId){
@@ -115,7 +116,10 @@ document.querySelectorAll('.js-add-to-cart')
         //showing updated cart quantity on web page(DOM)
         document.querySelector('.js-cart-quantity')
           .innerHTML = cartQuantity;
-        // console.log(cart);
+         console.log(cart);
+        // // Display an alert and hide it after 2 seconds
+        // alert("Added to cart successfully!");
+
     });
   });
 
