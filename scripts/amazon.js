@@ -24,8 +24,8 @@
 
 
 let productsHTML = ``;
-products.forEach((product)=>{
 
+products.forEach((product)=>{
   productsHTML  += `   
   <div class="product-container">
     <div class="product-image-container">
@@ -82,7 +82,7 @@ console.log(productsHTML);
 //putting HTML in HTML file using DOM:
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-//adding event(JS) in button
+//adding event(JS) in Add-to-cart button
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>
   {
@@ -106,16 +106,16 @@ document.querySelectorAll('.js-add-to-cart')
         productId: productId,
         quantity: 1 }); 
       }
-      //updating the cart quantity:
-      let cartQuantity = 0;
-      cart.forEach((cartItem) =>{
-      cartQuantity += cartItem.quantity;
-      })
-      // console.log(cartQuantity);
-      //showing updated cart quantity on web page(DOM)
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
-      // console.log(cart);
+        //updating the cart quantity:
+        let cartQuantity = 0;
+        cart.forEach((cartItem) =>{
+        cartQuantity += cartItem.quantity;
+        })
+        // console.log(cartQuantity);
+        //showing updated cart quantity on web page(DOM)
+        document.querySelector('.js-cart-quantity')
+          .innerHTML = cartQuantity;
+        // console.log(cart);
     });
   });
 
